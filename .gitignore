@@ -4,5 +4,3 @@ web/dist/**
 !web/dist/client/
 !web/dist/client/.gitkeep
 infra/gcp/.terraform/
-infra/gcp/.terraform.tfstate*
-infra/gcp/terraform.tfvars

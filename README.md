@@ -15,4 +15,8 @@ Use `npm run dev` in `web/` during frontend work; it proxies `/api/catalog` and 
 
 ## Deployment
 
-The OpenTofu configuration under [`infra/gcp`](infra/gcp) follows the same shared-project, Cloud Run, Artifact Registry, and keyless GitHub Actions identity pattern as decide-web. It creates the `rpldr.golbi.ai` domain mapping but does not manage external DNS.
+Infrastructure is owned exclusively by the versioned OpenTofu stack in
+[`golbi-ai/ops`](https://github.com/golbi-ai/ops/tree/main/tofu/rope-ladder-web).
+The application repository never applies or mutates cloud configuration directly.
+Each release selects its immutable Artifact Registry image in the ops stack and
+uses a reviewed `tofu plan` and `tofu apply` to roll Cloud Run forward.

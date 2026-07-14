@@ -1,4 +1,0 @@
-project_id        = "the-bird-499021-m8"
-region            = "us-central1"
-service_name      = "rope-ladder-web"
-placeholder_image = "us-docker.pkg.dev/cloudrun/container/hello"
