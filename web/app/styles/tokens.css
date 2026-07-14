@@ -1,0 +1,157 @@
+/* ===================================================================
+   decide — shared design tokens + baseline
+   Hygge visual system (decisions/hygge-visual-system). The token/reset
+   layer common to every page. Warm, light-default, editorial, calm,
+   neutral-dominant (~70/20/10). No gradients (except the brand mark),
+   no glows, no italics, no fake window chrome.
+
+   Extracted verbatim from the shared <style> subset of the six static
+   pages. Nav- and footer-specific rules live in the respective
+   *.module.css files; page-specific rules live with each route.
+   =================================================================== */
+
+:root {
+  --paper: #d8d4ce;
+  --paper-lifted: #ffffff;
+  --paper-deep: #c4bfb8;
+  --ink: #1f2122;
+  --mute: #5f5d58;
+
+  --ink-fixed: #1f2122;
+  --paper-fixed: #edeae4;
+
+  --hairline: rgba(31, 33, 34, 0.14);
+  --hairline-strong: rgba(31, 33, 34, 0.22);
+
+  --shadow-card: 0 1px 2px rgba(31, 33, 34, 0.05),
+    0 8px 24px rgba(31, 33, 34, 0.07);
+  --shadow-card-hover: 0 2px 6px rgba(31, 33, 34, 0.07),
+    0 16px 36px rgba(31, 33, 34, 0.11);
+
+  /* accents — pinned across both themes */
+  --blush: #e8b7b0; --blush-soft: #f2d5d1; --blush-deep: #d49890;
+  --teal:  #a7cbc4; --teal-soft:  #cfe2dd; --teal-deep:  #7fb0a6;
+  --honey: #e6c786; --honey-soft: #f3e4bf; --honey-deep: #c9a24f;
+  --sage:  #a9c49c; --sage-soft:  #d3e2ca; --sage-deep:  #7ca06b;
+  --clay:  #d89b8c; --clay-soft:  #efcfc6; --clay-deep:  #b86f5e;
+  --sky:   #a9c0ce; --sky-soft:   #d2e0e8; --sky-deep:   #6f94a6;
+
+  /* dark chrome — the WorkspaceSidebar frame, pinned in both themes */
+  --chrome: #1a1c1d;
+  --chrome-ink: #edeae4;
+  --chrome-mute: #9c998f;
+  --chrome-hairline: rgba(237, 234, 228, 0.14);
+  --chrome-hairline-strong: rgba(237, 234, 228, 0.24);
+
+  --r-sm: 6px;
+  --r-md: 9px;
+  --r-lg: 14px;
+
+  --font-sans: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --maxw: 1080px;
+}
+
+:root[data-theme="dark"] {
+  --paper: #1f2122;
+  --paper-lifted: #2a2d2e;
+  --paper-deep: #1a1c1d;
+  --ink: #edeae4;
+  --mute: #9c998f;
+
+  --ink-fixed: #1f2122;
+  --paper-fixed: #edeae4;
+
+  --hairline: rgba(237, 234, 228, 0.15);
+  --hairline-strong: rgba(237, 234, 228, 0.25);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.5),
+    0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- baseline ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+::selection { background: var(--blush-soft); color: var(--ink-fixed); }
+a { color: inherit; }
+svg { display: block; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+@media (max-width: 520px) {
+  .wrap { padding: 0 20px; }
+}
+
+/* editorial serif display — reserved for content-moment headlines */
+.serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.07;
+}
+
+/* mono metadata label — the print "Fig." register */
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0;
+}
+
+/* a figure header: index + name over a hairline rule (SectionHeader) */
+.fig {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 40px;
+}
+.fig .n { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+.fig .t { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); font-weight: 600; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border-radius: var(--r-md);
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.btn-primary { background: var(--blush); color: var(--ink-fixed); }
+.btn-primary:hover { background: var(--blush-deep); }
+
+:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 3px; border-radius: 3px; }
+
+/* inline link — ink text, teal underline carries the link role (AA-safe) */
+.ilink { color: inherit; text-decoration: none; border-bottom: 1.5px solid var(--teal-deep); padding-bottom: 1px; transition: border-color 0.15s ease; }
+.ilink:hover { border-color: var(--blush-deep); }

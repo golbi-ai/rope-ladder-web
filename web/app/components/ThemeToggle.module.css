@@ -1,0 +1,28 @@
+/* Ported from the shared .toggle rules. The dark-theme sun/moon swap keys off
+   the global :root[data-theme="dark"] attribute (kept global by CSS Modules
+   because :root is an element selector, not a class). */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--chrome-hairline-strong);
+  background: transparent;
+  color: var(--chrome-ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.toggle:hover {
+  background: rgba(237, 234, 228, 0.08);
+}
+.moon {
+  display: none;
+}
+:root[data-theme="dark"] .moon {
+  display: block;
+}
+:root[data-theme="dark"] .sun {
+  display: none;
+}
