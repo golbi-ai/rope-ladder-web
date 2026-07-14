@@ -74,6 +74,12 @@ type githubContent struct {
 }
 
 func main() {
+	if err := configureReleaseStore(context.Background()); err != nil {
+		if os.Getenv("K_SERVICE") != "" {
+			log.Fatalf("release distribution storage: %v", err)
+		}
+		log.Printf("local development: release routes unavailable (%v)", err)
+	}
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -86,6 +92,11 @@ func newMux() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /health", serveHealth)
 	mux.HandleFunc("GET /api/catalog", serveCatalog)
+	mux.HandleFunc("GET /install.sh", serveInstallSh)
+	mux.HandleFunc("GET /install.ps1", serveInstallPS1)
+	mux.HandleFunc("GET /version.json", serveReleaseManifest)
+	mux.HandleFunc("GET /releases/", serveRelease)
+	mux.HandleFunc("GET /apt/", serveAPT)
 	mux.HandleFunc("GET /", serveSite)
 	return mux
 }

@@ -2,7 +2,7 @@
 
 The public website for [rope-ladder](https://github.com/golbi-ai/rope-ladder): installation, documentation, and a browser for reviewed public curricula.
 
-`/api/catalog` reads the latest `main` branch of [rope-ladder-lesson-plans](https://github.com/golbi-ai/rope-ladder-lesson-plans). The site has no analytics, accounts, or user data collection.
+`/api/catalog` reads the latest `main` branch of [rope-ladder-lesson-plans](https://github.com/golbi-ai/rope-ladder-lesson-plans). The site also serves the signed CLI release surface: installers, a stable manifest, version-pinned signed-download redirects, and the signed APT repository. The site has no analytics, accounts, or user data collection.
 
 ## Local development
 
@@ -20,3 +20,8 @@ Infrastructure is owned exclusively by the versioned OpenTofu stack in
 The application repository never applies or mutates cloud configuration directly.
 Each release selects its immutable Artifact Registry image in the ops stack and
 uses a reviewed `tofu plan` and `tofu apply` to roll Cloud Run forward.
+
+CLI artifacts remain private in GCS. The Cloud Run runtime uses its managed
+identity to read release metadata and create short-lived keyless signed URLs;
+the `golbi-ai/rope-ladder` release workflow has a separate bucket-scoped WIF
+uploader identity. No direct GCP changes are made from this repository.
