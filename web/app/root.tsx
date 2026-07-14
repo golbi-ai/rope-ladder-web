@@ -5,6 +5,7 @@ import "./styles/tokens.css";
 
 const themePrepaint = `(function () {
   var root = document.documentElement; var key = "rpldr-theme"; var saved = null;
+  root.classList.add("js");
   try { saved = localStorage.getItem(key); } catch (e) {}
   if (saved) root.setAttribute("data-theme", saved);
   else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) root.setAttribute("data-theme", "dark");
