@@ -8,23 +8,32 @@ import styles from "./Chrome.module.css";
 function Mark({ id }: { id: string }) {
   const g = `rl-mark-${id}`;
   return (
-    <svg className={styles.mark} viewBox="0 0 24 27" width="19" height="27" fill="none" aria-hidden="true">
+    <svg className={styles.mark} viewBox="0 0 28 34" width="24" height="30" fill="none" aria-hidden="true">
       <defs>
         <linearGradient id={g} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#e8b7b0" />
-          <stop offset="52%" stopColor="#e6c786" />
-          <stop offset="100%" stopColor="#a7cbc4" />
+          <stop offset="0%" stopColor="#e9b0a7" />
+          <stop offset="50%" stopColor="#e8c579" />
+          <stop offset="100%" stopColor="#9ccabf" />
         </linearGradient>
       </defs>
-      <g stroke={`url(#${g})`} strokeWidth="2.2" strokeLinecap="round" fill="none">
-        <path d="M6.6 3.2 V23.8" />
-        <path d="M17.4 3.2 V23.8" />
-        <path d="M6.6 8 Q12 10.6 17.4 8" />
-        <path d="M6.6 13.5 Q12 16.1 17.4 13.5" />
-        <path d="M6.6 19 Q12 21.6 17.4 19" />
+      <g stroke={`url(#${g})`} strokeLinecap="round" fill="none">
+        {/* rope-eye loops the ladder hangs from */}
+        <circle cx="8" cy="5" r="2.5" strokeWidth="1.9" />
+        <circle cx="20" cy="5" r="2.5" strokeWidth="1.9" />
+        {/* rope rails */}
+        <path d="M8 7.5 V30" strokeWidth="2.5" />
+        <path d="M20 7.5 V30" strokeWidth="2.5" />
+        {/* sagging rungs */}
+        <path d="M8 13 Q14 15.7 20 13" strokeWidth="2.5" />
+        <path d="M8 19.5 Q14 22.2 20 19.5" strokeWidth="2.5" />
+        <path d="M8 26 Q14 28.7 20 26" strokeWidth="2.5" />
       </g>
-      <circle cx="6.6" cy="3.3" r="1.75" fill={`url(#${g})`} />
-      <circle cx="17.4" cy="3.3" r="1.75" fill={`url(#${g})`} />
+      {/* knots where each rung meets a rail */}
+      <g fill={`url(#${g})`}>
+        <circle cx="8" cy="13" r="1.9" /><circle cx="20" cy="13" r="1.9" />
+        <circle cx="8" cy="19.5" r="1.9" /><circle cx="20" cy="19.5" r="1.9" />
+        <circle cx="8" cy="26" r="1.9" /><circle cx="20" cy="26" r="1.9" />
+      </g>
     </svg>
   );
 }
