@@ -1,0 +1,111 @@
+/* ===================================================================
+   Splash candidate. Section rhythm comes from a two-tier spacing jump
+   and two tonal planes, not from rules: inter-section space is at least
+   twice the largest intra-section space, and exactly two sections sit on
+   tinted rounded planes (one recessed, one lifted). Color is functional:
+   artifact identity in the diagram and file tree, teal for interaction,
+   sage for success.
+   =================================================================== */
+
+.guide {
+  --space-section: clamp(5.5rem, 4rem + 6vw, 9.5rem);
+  --space-block: clamp(2.25rem, 1.75rem + 2vw, 3.5rem);
+  --ink-soft: var(--mute);
+  --mute-soft: var(--mute);
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+:global(html[data-theme="dark"]) .guide { --ink-soft: #c6c3ba; --mute-soft: #adaa9f; }
+
+.guide section { margin-top: var(--space-section); }
+.guide section:last-child { margin-bottom: var(--space-section); }
+
+/* ---------- type ---------- */
+.guide h1 { font: 500 clamp(34px, 4vw, 52px)/1.05 var(--font-serif); letter-spacing: -.03em; margin: 0 0 20px; max-width: 16ch; }
+.guide h2 { font: 500 clamp(28px, 3.2vw, 38px)/1.12 var(--font-serif); letter-spacing: -.024em; margin: 0 0 16px; max-width: 24ch; }
+.lead { font: 400 clamp(18px, 1.8vw, 21px)/1.52 var(--font-serif); color: var(--ink); max-width: 46ch; margin: 0 0 28px; }
+.body p { font: 400 16.5px/1.65 var(--font-sans); color: var(--ink-soft); max-width: 58ch; margin: 0; }
+.cta { margin-top: 26px; }
+.sidenote { font: 12.5px/1.62 var(--font-mono); color: var(--mute-soft); max-width: 44ch; margin: 14px 0 0; }
+.sidenote code { background: var(--paper-deep); padding: 1px 4px; border-radius: 3px; color: var(--ink); }
+.svg { width: 100%; height: auto; display: block; }
+
+/* ---------- hero: copy left, the generate run right ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  column-gap: 48px;
+  align-items: center;
+  margin-top: 0 !important;
+  padding-top: clamp(56px, 9vh, 96px);
+}
+.install { display: flex; align-items: flex-start; gap: 10px; padding: 12px 13px; border: 1px solid var(--hairline); border-radius: var(--r-md); background: var(--paper-deep); }
+.install code { flex: 1; min-width: 0; font: 12.5px/1.5 var(--font-mono); color: var(--ink); white-space: pre-wrap; word-break: break-all; }
+.copyBtn { flex: none; font: 10.5px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--mute-soft); background: var(--paper-lifted); border: 1px solid var(--hairline); border-radius: var(--r-sm); padding: 4px 8px; cursor: pointer; }
+.copyBtn:hover { color: var(--ink); border-color: var(--hairline-strong); }
+
+.stats { display: flex; gap: 40px; margin: 22px 0 0; }
+.stats dt { font: 500 clamp(26px, 2.6vw, 34px)/1 var(--font-serif); letter-spacing: -.02em; color: var(--ink); }
+.stats dd { margin: 6px 0 0; font: 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute-soft); }
+
+/* ---------- tonal planes ---------- */
+.planeDeep, .plane { border-radius: 20px; padding: clamp(36px, 3vw, 56px) clamp(24px, 4vw, 52px); }
+.planeDeep { background: var(--paper-deep); }
+.plane { background: var(--paper-lifted); box-shadow: var(--shadow-card); }
+.planeHead { font: 500 clamp(24px, 2.6vw, 34px)/1.15 var(--font-serif); letter-spacing: -.022em; margin: 0 0 var(--space-block); max-width: 26ch; }
+.planeGrid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); column-gap: 48px; align-items: baseline; margin-bottom: var(--space-block); }
+.planeGrid p { font: 400 16.5px/1.65 var(--font-sans); color: var(--ink-soft); max-width: 52ch; margin: 0; }
+.taWrap { max-width: 760px; }
+.taNote { text-align: right; }
+
+/* ---------- alternating spreads ---------- */
+.spreadLeft { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); column-gap: 48px; align-items: center; }
+.spreadRight { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); column-gap: 48px; align-items: start; }
+.spreadLeftBody { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); column-gap: 48px; align-items: center; }
+.railBare > * + * { margin-top: 18px; }
+
+/* ---------- file tree ---------- */
+.tree { border: 1px solid var(--hairline); border-radius: var(--r-lg); background: var(--paper-lifted); padding: 20px 24px; }
+.treeRow { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 6px 24px; padding: 8px 0; align-items: baseline; }
+.treeName { font: 13px var(--font-mono); color: var(--ink); display: flex; align-items: baseline; }
+.treeGlyph { color: var(--mute-soft); white-space: pre; }
+.treeKey { flex: none; width: 8px; height: 8px; border-radius: 2px; margin: 0 8px 0 2px; align-self: center; }
+.treeDesc { font: 14px/1.5 var(--font-sans); color: var(--mute-soft); }
+
+/* ---------- terminals ---------- */
+.console { background: var(--paper-lifted); border: 1px solid var(--hairline); border-radius: var(--r-md); box-shadow: var(--shadow-card); overflow: hidden; }
+.phead { display: flex; align-items: center; padding: 9px 14px; border-bottom: 1px solid var(--hairline); background: var(--paper-deep); }
+.pl { font: 10.5px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--mute-soft); }
+.cbody { padding: 16px 16px 17px; font-family: var(--font-mono); font-size: 13px; line-height: 1.75; color: var(--ink-soft); min-height: 248px; }
+.ln { white-space: pre-wrap; word-break: break-word; min-height: 1.75em; }
+.p { color: var(--teal-deep); }
+.cmd { color: var(--ink); }
+.dim { color: var(--mute-soft); }
+.ok { color: var(--sage-deep); font-weight: 600; }
+.rel { color: var(--teal-deep); font-weight: 600; }
+.typing::after { content: ""; display: inline-block; width: 6px; height: 1.02em; background: var(--ink); transform: translateY(2px); margin-left: 1px; animation: pvblink 1.05s steps(1) infinite; }
+
+.usage { margin: 0; padding: 12px 13px; border: 1px solid var(--hairline); border-radius: var(--r-md); background: var(--paper-deep); font: 12px/1.7 var(--font-mono); color: var(--ink); white-space: pre; overflow-x: auto; }
+
+/* ---------- motion: gated on html.js so no-JS shows the finished state ---------- */
+:global(html.js) .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+:global(html.js) .reveal.in { opacity: 1; transform: none; }
+:global(html.js) .console .ln { visibility: hidden; }
+:global(html.js) .console.run .ln.on { visibility: visible; }
+@keyframes pvblink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .reveal { opacity: 1 !important; transform: none !important; }
+  :global(html.js) .console .ln { visibility: visible !important; }
+  .typing::after { display: none !important; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .hero, .spreadLeft, .spreadRight, .spreadLeftBody, .planeGrid { grid-template-columns: 1fr; row-gap: 34px; }
+  .spreadLeft .railBare { order: 2; }
+  .stats { gap: 28px; }
+  .treeRow { grid-template-columns: 1fr; gap: 2px; }
+  .taNote { text-align: left; }
+}
