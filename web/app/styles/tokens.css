@@ -147,8 +147,8 @@ svg { display: block; }
   white-space: nowrap;
   transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
-.btn-primary { background: var(--blush); color: var(--ink-fixed); }
-.btn-primary:hover { background: var(--blush-deep); }
+.btn-primary { background: var(--teal); color: var(--ink-fixed); }
+.btn-primary:hover { background: var(--teal-deep); }
 
 :focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 3px; border-radius: 3px; }
 
